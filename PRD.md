@@ -82,18 +82,21 @@ B. Withdrawal Strategies (Supported Set)
 
 Only academically or advisor-established strategies are included:
 
-1. Fixed Real Withdrawal
-    * Constant inflation-adjusted withdrawal amount
+1. RMD / Life-Expectancy-Based Withdrawal
+    * Annual withdrawal = real portfolio balance / remaining horizon years,
+      converted to nominal dollars
+    * Draws down the portfolio in proportion to remaining life expectancy
 2. Fixed Percentage Withdrawal
     * Constant percentage of portfolio value annually
 3. Guyton-Klinger Guardrails Strategy
     * Dynamic adjustment based on portfolio performance bands
     * Includes:
-        * withdrawal increase rule
-        * withdrawal cut rule
-        * inflation adjustment logic
+        * withdrawal increase rule (prosperity rule: +10% when WR 20% below initial)
+        * withdrawal cut rule (capital-preservation rule: −10% when WR 20% above initial)
+        * inflation adjustment logic (freeze after a down year when WR exceeds initial)
 4. Inflation-Adjusted Hybrid Baseline Strategy
-    * Conservative hybrid between fixed real and percentage-based approaches
+    * Percentage-of-balance withdrawal clamped to an inflation-adjusted
+      floor (−20% of initial real) and ceiling (+25% of initial real)
 
 Each strategy is deterministic and fully reproducible.
 
