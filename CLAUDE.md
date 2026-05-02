@@ -1,4 +1,4 @@
-# [PROJECT NAME] — Claude Code Instructions
+# FIRE Simulator — Claude Code Instructions
 
 This file is the source of truth for how work gets done on this project.
 Read it before every session. Rules are not suggestions.
@@ -18,11 +18,11 @@ Read it before every session. Rules are not suggestions.
 
 ## 1. Project Context
 
-- **What:** [one sentence]
-- **Spec:** [path — read before any feature work]
-- **Stack:** [language] / [framework] / [database] / [hosting]
-- **Phase:** [optional milestone tracker — delete if not used]
-- **Commands:** test=`X` lint=`Y` typecheck=`Z` build=`W`
+- **What:** Interactive financial simulation tool comparing retirement withdrawal strategies under historical and Monte Carlo market scenarios.
+- **Spec:** [PRD.md](PRD.md) — read before feature work
+- **Stack:** TypeScript / React / Node.js backend / (no database for MVP)
+- **Phase:** MVP: core simulation engine + UI for parameter control and metric display
+- **Commands:** test=`npm test` lint=`npm run lint` typecheck=`npm run type-check` build=`npm run build`
 
 ---
 
@@ -59,14 +59,17 @@ Violating any of these requires explicit written approval *before* the
 code is written.
 
 ### 3.1 Data access
-- [where DB queries live and where they don't]
-- [ORM/client conventions]
+- No database for MVP. Historical market data loaded at startup from bundled datasets.
+- All data transforms (simulation logic) live in `src/lib/simulation/` module.
 
 ### 3.2 External calls
-- [where they live, auth requirements, error contract]
+- None for MVP. All computations are local.
+- Future: consider external data sources for market data updates; define error boundaries before adding.
 
 ### 3.3 State
-- [client vs server boundary, state library policy]
+- Client state: simulation parameters and results cached in React context or Redux (TBD).
+- Server state: none (stateless API, if needed later).
+- Simulation results (trajectories, distributions) computed on-demand, not persisted.
 
 ### 3.4 Configuration
 - All env vars read from [config path]. `process.env` / `os.environ`
@@ -75,11 +78,11 @@ code is written.
 - No secrets, tokens, or keys in code, comments, or logs. Ever.
 
 ### 3.5 Data integrity
-- [delete policy, validation layer, migration policy]
+- MVP: no persistent data. Input validation at UI boundary (parameter ranges per PRD).
+- Simulation outputs are immutable after computation.
 
 ### 3.6 Schema and migrations
-- Any change to persistent schema requires a migration in the same PR.
-- Schema changes without migrations are rejected.
+- No database for MVP; not applicable.
 
 ### 3.7 Dependencies and lockfile
 - New dependencies require approval. Provide: name, version, justification,
