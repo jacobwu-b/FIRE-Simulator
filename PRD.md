@@ -191,7 +191,7 @@ Annual aggregation is used only for visualization and reporting layers; simulati
 
 9. System Behavior Requirements
 
-* Start-of-year withdrawal assumption for all simulations
+* Annual withdrawal decision at start of each year; engine deducts 1/12 of the annual amount each month (see ADR 0003)
 * Deterministic execution for identical inputs
 * Separation of:
     * historical deterministic outcomes
