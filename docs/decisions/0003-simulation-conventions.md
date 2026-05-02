@@ -20,7 +20,7 @@ The five conventions below cover withdrawal timing, inflation normalization, ret
 
 **Alternatives considered:**
 - *Start-of-year lump sum:* PRD §9 originally stated "start-of-year withdrawal assumption." This is the convention in classic FIRE research (Bengen 1994, Trinity Study). However, a monthly deduction is arithmetically cleaner — no single-month portfolio shock, and the balance at any month-end is immediately interpretable as "current portfolio value."
-- *Callback fires monthly:* All four supported strategies (Fixed Real, Fixed %, Guyton-Klinger, Hybrid Baseline) make annual decisions. Firing monthly would require strategies to carry state across 12 calls, adding complexity with no benefit.
+- *Callback fires monthly:* All four supported strategies (RMD/Life-Expectancy, Fixed %, Guyton-Klinger, Hybrid Baseline) make annual decisions. Firing monthly would require strategies to carry state across 12 calls, adding complexity with no benefit.
 
 **Rationale:** Monthly deduction gives strategies the annual decision cadence they are designed for, while producing a smooth monthly trajectory. The annual aggregate (`sum of 12 monthly deductions`) equals the strategy's declared withdrawal, making per-year reporting exact. PRD §9 is updated to reflect this refinement.
 
