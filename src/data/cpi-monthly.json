@@ -2,7 +2,7 @@
   "metadata": {
     "source": "Federal Reserve Bank of St. Louis (FRED) \u2014 CPIAUCNS series",
     "description": "Monthly US CPI for All Urban Consumers, Not Seasonally Adjusted (BLS series CUUR0000SA0). Expressed as month-over-month fractional change.",
-    "retrieved": "2026-05-01",
+    "retrieved": "2026-05-02",
     "license": "US Government data, public domain (BLS/FRED)",
     "frequency": "monthly",
     "units": "decimal_return"

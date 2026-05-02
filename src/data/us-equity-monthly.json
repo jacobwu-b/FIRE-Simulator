@@ -2,7 +2,7 @@
   "metadata": {
     "source": "Kenneth R. French Data Library \u2014 F-F Research Data Factors (monthly)",
     "description": "Monthly total return of CRSP value-weighted US equity market (Mkt-RF + RF from Fama-French monthly factors). Equivalent to a broad US total-market index proxy (similar to VTI/VTSMX).",
-    "retrieved": "2026-05-01",
+    "retrieved": "2026-05-02",
     "license": "Free for academic/non-commercial use per Kenneth French Data Library terms",
     "frequency": "monthly",
     "units": "decimal_return"
