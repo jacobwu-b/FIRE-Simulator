@@ -172,6 +172,11 @@ git checkout -b {type}/{scope}-{description}
   Commits: `{type}({scope}): {imperative description, ≤72 chars}`
 - Types: `feat` `fix` `chore` `test` `docs` `refactor` `perf`
 
+### Branch naming for Linear issues
+When starting work on a Linear issue (e.g., J-12), **include the issue ID in the branch name**:
+- Recommended: `feat/J-12-short-description` or `J-12/short-description`
+- Avoid: `feat/short-description` (Linear won't auto-link)
+
 ### Before every commit
 Verify `git status` shows only intentional changes. No `.env`, no
 build artifacts, no `node_modules`. Stage explicitly when in doubt.
