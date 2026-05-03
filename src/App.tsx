@@ -7,6 +7,7 @@ import { StrategyParamsPanel } from './ui/controls/StrategyParamsPanel';
 import { DEFAULT_UI_PARAMS } from './ui/state/types';
 import type { UIParams, UIStrategyParams } from './ui/state/types';
 import type { StrategyId } from './lib/strategies/types';
+import { useSimulation } from './ui/state/useSimulation';
 
 function defaultStrategyParams(id: StrategyId): UIStrategyParams {
   switch (id) {
@@ -23,6 +24,7 @@ function defaultStrategyParams(id: StrategyId): UIStrategyParams {
 
 function App() {
   const [params, setParams] = useState<UIParams>(DEFAULT_UI_PARAMS);
+  const { result, isRunning } = useSimulation(params);
 
   function handleStrategyChange(id: StrategyId) {
     setParams((p) => ({
@@ -60,7 +62,28 @@ function App() {
         </aside>
         <section className="results-panel">
           <h2>Results</h2>
-          <p className="placeholder">Simulation results will appear here.</p>
+          {isRunning && <p className="placeholder">Running simulation…</p>}
+          {!isRunning && result === null && (
+            <p className="placeholder">Simulation results will appear here.</p>
+          )}
+          {!isRunning && result !== null && (
+            <pre className="results-json">{JSON.stringify(
+              {
+                historical: {
+                  periodCount: result.historical.periodCount,
+                  survivalRate: result.historical.survivalRate,
+                  metrics: result.historical.metrics,
+                },
+                monteCarlo: {
+                  pathCount: result.monteCarlo.pathCount,
+                  survivalRate: result.monteCarlo.survivalRate,
+                  metrics: result.monteCarlo.metrics,
+                },
+              },
+              null,
+              2,
+            )}</pre>
+          )}
         </section>
       </main>
     </div>
