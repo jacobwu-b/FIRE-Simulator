@@ -8,7 +8,7 @@ import { DEFAULT_UI_PARAMS } from './ui/state/types';
 import type { UIParams, UIStrategyParams } from './ui/state/types';
 import type { StrategyId } from './lib/strategies/types';
 import { useSimulation } from './ui/state/useSimulation';
-import { MetricCards, TrajectoryChart } from './ui/results';
+import { MetricCards, TrajectoryChart, CompareView } from './ui/results';
 
 function defaultStrategyParams(id: StrategyId): UIStrategyParams {
   switch (id) {
@@ -84,6 +84,11 @@ function App() {
                   title="Monte Carlo trajectories"
                 />
               </div>
+              <CompareView
+                historical={result.historical}
+                monteCarlo={result.monteCarlo}
+                initialPortfolio={params.initialPortfolio}
+              />
             </>
           )}
         </section>
