@@ -234,3 +234,37 @@ body {
   color: #6b7280;
   line-height: 1.5;
 }
+
+/* ─── Distribution charts ──────────────────────────────────────────────────── */
+
+.distribution-chart {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+/* ─── CompareView ──────────────────────────────────────────────────────────── */
+
+.compare-view {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.compare-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.compare-section-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #374151;
+  margin: 0;
+}
+
+.compare-charts-row {
+  display: flex;
+  gap: 1.5rem;
+}
