@@ -1,8 +1,10 @@
 import type { SimParams, Trajectory } from '../simulation/types';
 import type { MarketDataset } from '../data/types';
 import type { StrategyParams } from '../strategies/types';
+import type { AggregateMetrics } from '../metrics/aggregate';
 import { runMonthlyEngine } from '../simulation/engine';
 import { createStrategy } from '../strategies/index';
+import { aggregate } from '../metrics/aggregate';
 
 /**
  * Aggregated result of running the simulation over every valid rolling
@@ -31,6 +33,8 @@ export interface HistoricalResult {
   realWithdrawalsPerYear: number[][];
   /** Individual trajectories for each rolling period; length = periodCount. */
   trajectories: Trajectory[];
+  /** Unified summary metrics computed over all trajectories. */
+  metrics: AggregateMetrics;
 }
 
 /**
@@ -110,5 +114,6 @@ export function runHistorical(
     nominalWithdrawalsPerYear,
     realWithdrawalsPerYear,
     trajectories,
+    metrics: aggregate(trajectories),
   };
 }
