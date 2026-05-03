@@ -8,6 +8,7 @@ import { DEFAULT_UI_PARAMS } from './ui/state/types';
 import type { UIParams, UIStrategyParams } from './ui/state/types';
 import type { StrategyId } from './lib/strategies/types';
 import { useSimulation } from './ui/state/useSimulation';
+import { MetricCards, TrajectoryChart } from './ui/results';
 
 function defaultStrategyParams(id: StrategyId): UIStrategyParams {
   switch (id) {
@@ -61,28 +62,29 @@ function App() {
           />
         </aside>
         <section className="results-panel">
-          <h2>Results</h2>
-          {isRunning && <p className="placeholder">Running simulation…</p>}
+          {isRunning && <p className="running-indicator">Running simulation…</p>}
           {!isRunning && result === null && (
-            <p className="placeholder">Simulation results will appear here.</p>
+            <p className="placeholder">Adjust parameters to run a simulation.</p>
           )}
           {!isRunning && result !== null && (
-            <pre className="results-json">{JSON.stringify(
-              {
-                historical: {
-                  periodCount: result.historical.periodCount,
-                  survivalRate: result.historical.survivalRate,
-                  metrics: result.historical.metrics,
-                },
-                monteCarlo: {
-                  pathCount: result.monteCarlo.pathCount,
-                  survivalRate: result.monteCarlo.survivalRate,
-                  metrics: result.monteCarlo.metrics,
-                },
-              },
-              null,
-              2,
-            )}</pre>
+            <>
+              <MetricCards
+                historical={result.historical.metrics}
+                monteCarlo={result.monteCarlo.metrics}
+              />
+              <div className="trajectory-charts">
+                <TrajectoryChart
+                  trajectories={result.historical.trajectories}
+                  horizonYears={params.horizonYears}
+                  title="Historical trajectories"
+                />
+                <TrajectoryChart
+                  trajectories={result.monteCarlo.trajectories}
+                  horizonYears={params.horizonYears}
+                  title="Monte Carlo trajectories"
+                />
+              </div>
+            </>
           )}
         </section>
       </main>
