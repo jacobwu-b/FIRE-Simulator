@@ -7,6 +7,7 @@ import { createStrategy } from '../strategies/index';
 import { calibrateFromHistorical } from '../montecarlo/calibrate';
 import { createBlockBootstrapGenerator } from '../montecarlo/generate';
 import { deriveSeed } from '../montecarlo/prng';
+import { aggregate } from '../metrics/aggregate';
 
 const DEFAULT_KEEP_TRAJECTORIES = 200;
 
@@ -112,6 +113,7 @@ export function runMonteCarlo(
     }
   }
 
+  const metrics = aggregate(allTrajectories);
   const trajectories = sampleTrajectories(allTrajectories, endingRealValues, keepCount);
   const survivalRate = config.pathCount > 0 ? survivalCount / config.pathCount : 0;
 
@@ -124,5 +126,6 @@ export function runMonteCarlo(
     nominalWithdrawalsPerYear,
     realWithdrawalsPerYear,
     trajectories,
+    metrics,
   };
 }

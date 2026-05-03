@@ -1,4 +1,5 @@
 import type { Trajectory } from '../simulation/types';
+import type { AggregateMetrics } from '../metrics/aggregate';
 
 /** Configuration for the stationary block bootstrap generator. */
 export interface BlockBootstrapConfig {
@@ -96,6 +97,8 @@ export interface MonteCarloResult {
    * Length = min(keepTrajectories, pathCount).
    */
   trajectories: Trajectory[];
+  /** Unified summary metrics computed over ALL paths (not the sampled subset). */
+  metrics: AggregateMetrics;
 }
 
 /**
