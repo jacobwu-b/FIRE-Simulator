@@ -13,20 +13,20 @@
     "test": "vitest"
   },
   "dependencies": {
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
     "recharts": "^3.8.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.0.0",
     "@testing-library/react": "^16.3.2",
     "@testing-library/user-event": "^14.6.1",
-    "@types/node": "^25.6.0",
+    "@types/node": "^25.8.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
-    "@typescript-eslint/eslint-plugin": "^8.0.0",
-    "@typescript-eslint/parser": "^8.0.0",
-    "@vitejs/plugin-react": "^6.0.1",
+    "@typescript-eslint/eslint-plugin": "^8.59.3",
+    "@typescript-eslint/parser": "^8.59.3",
+    "@vitejs/plugin-react": "^6.0.2",
     "eslint": "^9.0.0",
     "eslint-plugin-react": "^7.33.0",
     "eslint-plugin-react-hooks": "^5.0.0",
@@ -34,8 +34,8 @@
     "jsdom": "^24.0.0",
     "prettier": "^3.0.0",
     "typescript": "^6.0.0",
-    "typescript-eslint": "^8.0.0",
-    "vite": "^8.0.0",
+    "typescript-eslint": "^8.59.3",
+    "vite": "^8.0.13",
     "vitest": "^2.0.0"
   }
 }
