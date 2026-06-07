@@ -38,23 +38,28 @@ function makeFile<T>(series: T[]): DataFile<T> {
 // Test setup: mock the JSON imports so we control fixture data
 // ---------------------------------------------------------------------------
 
-vi.mock('../../data/us-equity-monthly.json', () => ({ default: null }));
-vi.mock('../../data/intl-equity-monthly.json', () => ({ default: null }));
-vi.mock('../../data/cpi-monthly.json', () => ({ default: null }));
+const fixtures = {
+  us: null as DataFile<MonthlyReturn> | null,
+  intl: null as DataFile<MonthlyReturn> | null,
+  cpi: null as DataFile<MonthlyInflation> | null,
+};
 
 function setFixtures(
   us: MonthlyReturn[],
   intl: MonthlyReturn[],
   cpi: MonthlyInflation[],
 ) {
-  vi.doMock('../../data/us-equity-monthly.json', () => ({ default: makeFile(us) }));
-  vi.doMock('../../data/intl-equity-monthly.json', () => ({ default: makeFile(intl) }));
-  vi.doMock('../../data/cpi-monthly.json', () => ({ default: makeFile(cpi) }));
+  fixtures.us = makeFile(us);
+  fixtures.intl = makeFile(intl);
+  fixtures.cpi = makeFile(cpi);
 }
 
 // Because the module caches imports, we reimport fresh each time.
 async function freshLoad() {
   vi.resetModules();
+  vi.doMock('../../data/us-equity-monthly.json', () => ({ default: fixtures.us }));
+  vi.doMock('../../data/intl-equity-monthly.json', () => ({ default: fixtures.intl }));
+  vi.doMock('../../data/cpi-monthly.json', () => ({ default: fixtures.cpi }));
   const { loadMarketData } = await import('./load');
   return loadMarketData;
 }
