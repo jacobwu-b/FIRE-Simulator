@@ -24,8 +24,8 @@
     "@types/node": "^26.1.1",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.0.0",
-    "@typescript-eslint/eslint-plugin": "^8.63.0",
-    "@typescript-eslint/parser": "^8.63.0",
+    "@typescript-eslint/eslint-plugin": "^8.64.0",
+    "@typescript-eslint/parser": "^8.64.0",
     "@vitejs/plugin-react": "^6.0.3",
     "eslint": "^9.39.5",
     "eslint-plugin-react": "^7.33.0",
@@ -34,8 +34,8 @@
     "jsdom": "^29.1.1",
     "prettier": "^3.9.5",
     "typescript": "^6.0.0",
-    "typescript-eslint": "^8.63.0",
-    "vite": "^8.1.4",
+    "typescript-eslint": "^8.64.0",
+    "vite": "^8.1.5",
     "vitest": "^4.1.10"
   }
 }
